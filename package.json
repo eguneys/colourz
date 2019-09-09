@@ -2,7 +2,7 @@
   "name": "colourz",
   "version": "1.0.0",
   "description": "Manipulate colors using hsv, rgba and use as css, hex string or integer array",
-  "main": "index.js",
+  "main": "colors.js",
   "repository": "https://github.com/eguneys/colourz",
   "author": "eguneys",
   "license": "MIT",
