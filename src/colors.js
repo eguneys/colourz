@@ -52,7 +52,7 @@ export function cssHsla(h,s,l,a) {
 
 }
 
-export function shifter(rgba) {
+export function shifter(rgba = Palette.Blue) {
   let [h, s, l, a] = hsla(rgba);
 
   const base = [h, s, l, a];
