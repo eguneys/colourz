@@ -1,3 +1,4 @@
+import * as u from './util';
 import * as convert from './rgba';
 export const Palette = {
   Blue: 0xff0000ff,
@@ -40,7 +41,10 @@ export const css = rgba => {
 export function cssHsla(h, s, l, a) {
   return `hsla(${h * 360}, ${s * 100}%, ${l * 100}%, ${a / 255})`;
 }
-export function shifter(rgba) {
+export function normalizeHsb([h, s, b]) {
+  return [u.map(h, 0, 360, 0, 1), u.map(s, 0, 100, 0, 1), u.map(b, 0, 100, 0, 1)];
+}
+export function shifter(rgba = Palette.Blue) {
   let [h, s, l, a] = hsla(rgba);
   const base = [h, s, l, a]; // https://stackoverflow.com/a/57539098/3994249
 
@@ -69,7 +73,17 @@ export function shifter(rgba) {
   this.hue = fluent(dv => h = dv);
   this.sat = fluent(dv => s = dv);
   this.lum = fluent(dv => l = dv);
-  this.alp = fluent(dv => a = dv);
+  this.alp = fluent(dv => a = dv * 255);
+  this.hsl = fluent(dv => {
+    h = dv[0];
+    s = dv[1];
+    l = dv[2];
+  });
+  this.hsb = fluent(dv => {
+    h = dv[0] / 360;
+    s = dv[1] / 100;
+    l = dv[2] / 100;
+  });
 
   this.rgba = () => hslToRgba(h, s, l, a);
 

@@ -44,6 +44,10 @@ Takes an rgba color in format `0xaarrggbb` where `a` is `alpha` `rgb` is other c
 
 _.hue_, _.sat_ _.lum_ _.alp_ sets the hue, saturation, luminance and alpha values between _0 and 1_.
 
+`color.hsl([h, s, l])` sets hsl from a single array of h s l values in range 0 and 1.
+
+`color.hsb([h, s, b])` sets hsl from a single array of h s b values in range _h 360_ _s 100_ _b 100_.
+
 `color.reset()` reset the hue saturation luminance and alpha values to base values.
 
 `color.base()` set the current color values as the base values. So the _.reset_ will reset to current values.
